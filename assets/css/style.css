@@ -2,7 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
-  background-color: #797878;
+  background-color: #b8b8b8;
 }
 
 textarea{
@@ -39,29 +39,32 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid  #797878;
+  border-top: 1px solid  #b8b8b8;
 }
 
 .hour {
-  background-color: #797878;
+  background-color: #b8b8b8;
   color: #000000;
   font-weight: bold;
   border-top: 1px dashed #000000;
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: #868686;
   color: white;
+  border-top: 1px dashed #000000;
 }
 
 .present {
   background-color: #ff6961;
   color: white;
+  border-top: 1px dashed #000000;
 }
 
 .future {
   background-color: #77dd77;
   color: white;
+  border-top: 1px dashed #000000;
 }
 
 .saveBtn {

@@ -2,29 +2,7 @@
 var currentDay = $("#currentDay");
 currentDay.text(moment().format('dddd, MMMM Do YYYY'));
 
-var rowDiv = document.createElement("div");
-var hourDiv = document.createElement("div");
-var textAreaEl = document.createElement("textarea");
-var buttonEl = document.createElement("button");
-var imgEl = document.createElement("img");
-
-$(imgEl).attr("src", "./assets/images/floppy_disc.png");
-$(rowDiv).attr("class", "row");
-$(hourDiv).attr("class", "col-xl-1 hour");
-$(textAreaEl).attr("class", "col-xl-10 hour");
-$(buttonEl).attr("class", "col-xl-1 saveBtn");
-
-// var appendTimeBlock = {
-//     $(rowDiv).append(hourDiv),
-//     $(rowDiv).append()
-// }
-// $(buttonEl).append(imgEl);
-
 var currentHour = moment().hours();
-
-console.log(currentHour)
-
-// const timeBlocks = [ "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM" ]
 
 const timeBlocks = [
     {
@@ -65,25 +43,32 @@ const timeBlocks = [
     },
 ]
 
-// console.log(timeBlocks[0].time);
-
-// timeBlocks.forEach(showTimeBlocks);
-
-// function createTimeBlocks() {
-//     showTimeBlocks();
-//     timeBlocks++
-// }
+timeBlocks.forEach(showTimeBlocks);
 
 function showTimeBlocks(timeBlock) {
+    console.log(timeBlock);
+    var rowDiv = document.createElement("div");
+    var hourDiv = document.createElement("div");
+    var textAreaEl = document.createElement("textarea");
+    var buttonEl = document.createElement("button");
+    var imgEl = document.createElement("img");
+
+    $(imgEl).attr("src", "./assets/images/floppy_disc.png");
+    $(rowDiv).attr("class", "row");
+    $(hourDiv).attr("class", "col-xl-1 hour");
+    $(textAreaEl).attr("class", "col-xl-10 hour");
+    $(buttonEl).attr("class", "col-xl-1 saveBtn");
+        
     $(".container").append(rowDiv);
     $(rowDiv).append(hourDiv);
     $(rowDiv).append(textAreaEl);
     $(rowDiv).append(buttonEl);
     $(buttonEl).append(imgEl);
     hourDiv.innerHTML = timeBlock.time;
-    // timeBlock++
+
+    if (timeBlock.hour < currentHour) {
+        $(textAreaEl).removeClass("hour").addClass("past");
+    } else if (timeBlock.hour === currentHour) {
+        $(textAreaEl).removeClass("hour").addClass("present");
+    } else $(textAreaEl).removeClass("hour").addClass("future");
 }
-
-console.log(showTimeBlocks);
-
-// showTimeBlocks();
