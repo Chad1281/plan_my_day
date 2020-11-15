@@ -1,47 +1,89 @@
 
-// var today = moment().format('dddd, MMMM Do YYYY');
 var currentDay = $("#currentDay");
 currentDay.text(moment().format('dddd, MMMM Do YYYY'));
 
-// header id's
-$(headerDescDiv).attr("id", "headerDesc");
-$(headerDayDiv).attr("id", "headerDay");
+var rowDiv = document.createElement("div");
+var hourDiv = document.createElement("div");
+var textAreaEl = document.createElement("textarea");
+var buttonEl = document.createElement("button");
+var imgEl = document.createElement("img");
 
-// header text
-headerH2.textContent = "Plan My Day";
-headerDescDiv.textContent = "Make the most of today, plan it, and stay on task";
-// headerDayDiv.textContent = today;
+$(imgEl).attr("src", "./assets/images/floppy_disc.png");
+$(rowDiv).attr("class", "row");
+$(hourDiv).attr("class", "col-xl-1 hour");
+$(textAreaEl).attr("class", "col-xl-10 hour");
+$(buttonEl).attr("class", "col-xl-1 saveBtn");
 
-// place header in html
-$("body").append(headerEl);
-$(headerEl).append(headerH2);
-$(headerEl).append(headerDescDiv);
-$(headerEl).append(headerDayDiv);
+// var appendTimeBlock = {
+//     $(rowDiv).append(hourDiv),
+//     $(rowDiv).append()
+// }
+// $(buttonEl).append(imgEl);
 
-// create form
-var formCon = document.createElement("div");
-var formEl = document.createElement("form");
-var formLa = document.createElement("label");
-var formIn = document.createElement("input");
-var formBtn = document.createElement("input");
+var currentHour = moment().hours();
 
-// form id's
-$(formCon).attr("id", "formCon");
-$(formEl).attr("id", "formEl");
-$(formLa).attr("id", "formLa");
-$(formIn).attr("id", "formIn");
-$(formIn).attr("type", "text");
-$(formBtn).attr("id", "formBtn");
-$(formBtn).attr("type", "submit");
+console.log(currentHour)
 
-console.log(moment().hours());
+// const timeBlocks = [ "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM" ]
 
-const timeBlocks = [ "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM" ]
+const timeBlocks = [
+    {
+        time: "9AM",
+        hour: 9,
+    },
+    {
+        time: "10AM",
+        hour: 10,
+    },
+    {
+        time: "11AM",
+        hour: 11,
+    },
+    {
+        time: "12PM",
+        hour: 12,
+    },
+    {
+        time: "1PM",
+        hour: 13,
+    },
+    {
+        time: "2PM",
+        hour: 14,
+    },
+    {
+        time: "3PM",
+        hour: 15,
+    },
+    {
+        time: "4PM",
+        hour: 16,
+    },
+    {
+        time: "5PM",
+        hour: 17,
+    },
+]
 
-// const timeBlocks = [
-//     {
-//         hour: "9AM",
-//         entry: "",
-//         submit: "",
-//     }
-// ]
+// console.log(timeBlocks[0].time);
+
+// timeBlocks.forEach(showTimeBlocks);
+
+// function createTimeBlocks() {
+//     showTimeBlocks();
+//     timeBlocks++
+// }
+
+function showTimeBlocks(timeBlock) {
+    $(".container").append(rowDiv);
+    $(rowDiv).append(hourDiv);
+    $(rowDiv).append(textAreaEl);
+    $(rowDiv).append(buttonEl);
+    $(buttonEl).append(imgEl);
+    hourDiv.innerHTML = timeBlock.time;
+    // timeBlock++
+}
+
+console.log(showTimeBlocks);
+
+// showTimeBlocks();
